@@ -23,24 +23,24 @@ class TransactionsController extends Controller
                 'MVR' => $transactionsMVR
             ],
             'balances' => [
-                'LKR' => $this->calcuateBalance($usdQuery),
-                'USD' => $this->calcuateBalance($lkrQuery),
+                'USD' => $this->calcuateBalance($usdQuery),
+                'LKR' => $this->calcuateBalance($lkrQuery),
                 'MVR' => $this->calcuateBalance($mvrQuery)
             ]
         ]);
     }
 
     private function calcuateBalance($query) {
-        $amounts = [];
+        $balance = 0;
         $items = $query->get();
         foreach ($items as $item) {
-            if($item->category->type == 'debit') {
-                array_push($amounts, $item->amount);
+            if($item->category->type == 'credit') {
+                $balance += $item->amount;
             } else {
-                array_push($amounts, -$item->amount);
+                $balance -= $item->amount;
             }
         }
-        return array_sum($amounts);
+        return $balance;
     }
 
     public function newTransactionView() {

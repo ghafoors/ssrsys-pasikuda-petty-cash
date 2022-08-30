@@ -25,9 +25,9 @@
                                     <div class="col text-right">
                                         <h5 class="mr-4">Balance:&nbsp;
                                             @if($balances[$key] >=0)
-                                                <span class="text-success">{{number_format($balances[$key])}}</span>
+                                                <span class="text-success">{{number_format($balances[$key], 2)}}</span>
                                             @else
-                                                <span class="text-danger">{{number_format($balances[$key])}}</span>
+                                                <span class="text-danger">{{number_format($balances[$key], 2)}}</span>
                                             @endif
                                         </h5>
                                     </div>
