@@ -89,11 +89,6 @@
                         <i class="ni ni-money-coins text-orange"></i> {{ __('Transactions') }}
                     </a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('map') }}">
-                        <i class="ni ni-collection text-orange"></i> {{ __('Budgets') }}
-                    </a>
-                </li>
             </ul>
             <!-- Divider -->
             <hr class="my-3">
@@ -115,11 +110,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
                                     {{ __('User profile') }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('User Management') }}
                                 </a>
                             </li>
                         </ul>
