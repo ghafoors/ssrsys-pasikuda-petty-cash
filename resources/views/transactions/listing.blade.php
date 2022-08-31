@@ -52,7 +52,8 @@
                                                 <tbody>
                                                 @if(!empty($currency))
                                                     @foreach($currency as $transaction)
-                                                        <tr data-toggle="tooltip" data-placement="top" title="{{$transaction->note}}">
+                                                        <tr data-toggle="tooltip" data-placement="top"
+                                                            title="{{$transaction->note}}">
                                                             <td>{{$transaction->reference}}</td>
                                                             <td>{{$transaction->category->parent}}
                                                                 - {{$transaction->category->category}}</td>
@@ -68,9 +69,23 @@
                                                                     <i class="ni ni-fat-delete text-danger"></i>
                                                                 @endif
                                                             </td>
-                                                            <td>
-                                                                <a class="btn btn-icon btn-danger btn-sm" href="{{route('transaction.delete.action', $transaction->id)}}">
-                                                                    <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                                                            <td class="text-right">
+
+                                                                <a class="btn btn-icon btn-outline-primary btn-sm {{!$transaction->attachment_path ? 'disabled' : ''}}"
+                                                                   href="{{route('transaction.attachment.view', $transaction->id)}}"
+                                                                   target="_blank">
+                                                                    <span class="btn-inner--icon"><i
+                                                                            class="ni ni-single-copy-04"></i></span>
+                                                                </a>
+                                                                <a class="btn btn-icon btn-outline-warning btn-sm"
+                                                                   href="{{route('transaction.update.view', $transaction->id)}}">
+                                                                    <span class="btn-inner--icon"><i
+                                                                            class="ni ni-ruler-pencil"></i></span>
+                                                                </a>
+                                                                <a class="btn btn-icon btn-danger btn-sm prompt-confirmation"
+                                                                   href="{{route('transaction.delete.action', $transaction->id)}}">
+                                                                    <span class="btn-inner--icon"><i
+                                                                            class="ni ni-fat-remove"></i></span>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -97,4 +112,11 @@
 @endsection
 
 @push('js')
+
+    <script>
+        $('.prompt-confirmation').on('click', function () {
+            return confirm("You're about to permanently delete an entry, are you sure?");
+        });
+    </script>
+
 @endpush

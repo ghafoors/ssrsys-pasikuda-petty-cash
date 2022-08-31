@@ -30,9 +30,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['prefix' => 'transactions'], function () {
             Route::get('/', [TransactionsController::class, 'listTransactions'])->name('transaction.listing');
+            Route::get('/{id}/attachment', [TransactionsController::class, 'viewAttachment'])->name('transaction.attachment.view');
+            Route::get('/{id}/update', [TransactionsController::class, 'updateTransactionView'])->name('transaction.update.view');
             Route::get('/{id}/delete', [TransactionsController::class, 'deleteTransactionAction'])->name('transaction.delete.action');
             Route::get('/new', [TransactionsController::class, 'newTransactionView'])->name('transaction.new.view');
             Route::post('/new', [TransactionsController::class, 'newTransactionAction'])->name('transaction.new.action');
+            Route::post('/{id}/update', [TransactionsController::class, 'updateTransactionAction'])->name('transaction.update.action');
         });
 
     Route::group(['prefix' => 'settings'], function () {
