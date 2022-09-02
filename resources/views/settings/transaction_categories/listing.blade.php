@@ -38,7 +38,13 @@
                                         <td>{{$category->parent}}</td>
                                         <td>{{$category->category}}</td>
                                         <td>{{$category->type}}</td>
-                                        <td></td>
+                                        <td class="text-right">
+                                            <a class="btn btn-icon btn-outline-warning btn-sm"
+                                               href="{{route('settings.transaction.category.update.view', $category->id)}}">
+                                                                    <span class="btn-inner--icon"><i
+                                                                            class="ni ni-ruler-pencil"></i></span>
+                                            </a>
+                                        </td>
                                         <td></td>
                                     </tr>
                                 @endforeach

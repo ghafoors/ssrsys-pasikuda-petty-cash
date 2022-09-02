@@ -15,4 +15,13 @@ class SettingsController extends Controller
         $newCategory->save();
         return redirect()->route('settings.transaction.category.listing');
     }
+
+    public function TransactionCategoriesUpdateAction(Request $request, $id) {
+        $category = TransactionCategory::findOrFail($id);
+        $category->parent = $request->input('parent', $category->parent);
+        $category->category = $request->input('category', $category->category);
+        $category->type = $request->input('type', $category->input);
+        $category->save();
+        return redirect()->route('settings.transaction.category.listing');
+    }
 }

@@ -18,4 +18,11 @@ class SettingsViewController extends Controller
                 'categories' => $categories
             ]);
     }
+
+    public function TransactionCategoriesUpdateView($id) {
+        $category = TransactionCategory::findOrFail($id);
+        return view('settings.transaction_categories.edit')->with([
+            'category' => $category
+        ]);
+    }
 }

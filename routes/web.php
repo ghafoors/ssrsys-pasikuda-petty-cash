@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'settings'], function () {
         Route::group(['prefix' => 'transaction'], function () {
             Route::get('/categories', [SettingsViewController::class, 'TransactionCategoriesListing'])->name('settings.transaction.category.listing');
+            Route::get('/categories/{id}/update', [SettingsViewController::class, 'TransactionCategoriesUpdateView'])->name('settings.transaction.category.update.view');
+            Route::post('/categories/{id}/update', [SettingsController::class, 'TransactionCategoriesUpdateAction'])->name('settings.transaction.category.update.action');
             Route::post('/categories', [SettingsController::class, 'AddNewTransactionCategory'])->name('settings.transaction.category.new');
         });
     });
