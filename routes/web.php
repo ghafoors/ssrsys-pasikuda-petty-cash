@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SettingsViewController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TransactionsController;
+use \App\Http\Controllers\UserManagementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,14 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+
+        Route::group(['prefix' => 'user-management'], function () {
+            Route::get('/', [UserManagementController::class, 'listUsers'])->name('users.listing');
+            Route::get('/new', [UserManagementController::class, 'addUserView'])->name('users.new.view');
+            Route::post('/new', [UserManagementController::class, 'addUserAction'])->name('users.new.action');
+            Route::get('/{id}/update', [UserManagementController::class, 'updateUserView'])->name('users.update.view');
+            Route::post('/{id}/update', [UserManagementController::class, 'updateUserAction'])->name('users.update.action');
+        });
 
         Route::group(['prefix' => 'transactions'], function () {
             Route::get('/', [TransactionsController::class, 'listTransactions'])->name('transaction.listing');

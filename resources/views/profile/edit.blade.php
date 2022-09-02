@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Profile')])
 
 @section('content')
-    @include('users.partials.header', [
+    @include('profile.resources.views.users_.partials.header', [
         'title' => '',
         'description' => '',
         'class' => 'col-lg-7'
