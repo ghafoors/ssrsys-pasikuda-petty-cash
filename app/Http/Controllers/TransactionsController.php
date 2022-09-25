@@ -15,6 +15,13 @@ class TransactionsController extends Controller
         $usdQuery = Transaction::query()->where('currency', 'USD');
         $lkrQuery = Transaction::query()->where('currency', 'LKR');
         $mvrQuery = Transaction::query()->where('currency', 'MVR');
+        $date = request()->date;
+        if(!empty($date)) {
+            $usdQuery->where('date', $date);
+            $lkrQuery->where('date', $date);
+            $mvrQuery->where('date', $date);
+        }
+
         $transactionsUSD = $usdQuery->orderBy('date', 'desc')->paginate(10);
         $transactionsLKR = $lkrQuery->orderBy('date', 'desc')->paginate(10);
         $transactionsMVR = $mvrQuery->orderBy('date', 'desc')->paginate(10);

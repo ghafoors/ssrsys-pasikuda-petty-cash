@@ -9,8 +9,27 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col">
+                            <div class="col-md">
                                 <h3 class="mb-0">Transactions</h3>
+                            </div>
+                            <div class="col-md">
+                                <form action="" method="GET">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <h5>Date</h5>
+                                            <input type="date" class="form-control" id="date" name="date" required value="{{request()->date}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <h5>&nbsp;</h5>
+                                            <button type="submit" class="btn btn-success">Filter</button>
+                                            <a href="{{route('transaction.listing')}}" class="btn btn-warning">Clear</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
