@@ -51,7 +51,7 @@
                                 <div class="col-lg">
                                     <div class="form-group">
                                         <h5>Amount</h5>
-                                        <input type="number" class="form-control" id="amount" name="amount" step="0.1" required value="{{$transaction->amount}}">
+                                        <input type="number" class="form-control" id="amount" name="amount" step="0.01" required value="{{$transaction->amount}}">
                                     </div>
                                     <div class="form-group">
                                         <h5>
