@@ -51,7 +51,7 @@
                                 <div class="col-lg">
                                     <div class="form-group">
                                         <h5>Amount</h5>
-                                        <input type="number" class="form-control" id="amount" name="amount" required>
+                                        <input type="number" class="form-control" id="amount" step="0.1" name="amount" required>
                                     </div>
                                     <div class="form-group">
                                         <h5>Attachment</h5>
