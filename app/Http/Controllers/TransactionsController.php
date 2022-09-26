@@ -15,6 +15,11 @@ class TransactionsController extends Controller
         $usdQuery = Transaction::query()->where('currency', 'USD');
         $lkrQuery = Transaction::query()->where('currency', 'LKR');
         $mvrQuery = Transaction::query()->where('currency', 'MVR');
+        $balances = [
+            'USD' => $this->calcuateBalance($usdQuery),
+            'LKR' => $this->calcuateBalance($lkrQuery),
+            'MVR' => $this->calcuateBalance($mvrQuery)
+        ];
         $date = request()->date;
         if(!empty($date)) {
             $usdQuery->where('date', $date);
@@ -31,11 +36,7 @@ class TransactionsController extends Controller
                 'USD' => $transactionsUSD,
                 'MVR' => $transactionsMVR
             ],
-            'balances' => [
-                'USD' => $this->calcuateBalance($usdQuery),
-                'LKR' => $this->calcuateBalance($lkrQuery),
-                'MVR' => $this->calcuateBalance($mvrQuery)
-            ]
+            'balances' => $balances
         ]);
     }
 
